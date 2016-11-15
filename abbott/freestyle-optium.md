@@ -116,9 +116,14 @@ Each result is returned in its own line complete with the timestamp and some
     result = result-value SP
              SP date-2-nosec
              SP result-type
-             SP 0x00
+             SP is-control
     result-value = 3DIGIT / ( "HI" SP )
     result-type = "G" / "K"
+    is-control = "0x" 2DIGIT
+
+The `is-control` value specifies if the glucose or β-ketone result was marked as
+a control solution test during measurement time. 0x01 means the result is a
+control test and 0x00 means it is a regular measurement.
 
 The result type literal distinguishes between blood glucose (`G`) and β-ketones
 (`K`) test results.
